@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Fixed, approved title/abstract searches; no query expansion or model ranking."""
 import csv
 import hashlib

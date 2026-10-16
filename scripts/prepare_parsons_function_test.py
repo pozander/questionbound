@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Prepare the user-approved fixed-evidence comparison; no API calls."""
 import json
 import hashlib

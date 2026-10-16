@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Retry only failed approved searches, sequentially, preserving successful results."""
 import json
 import os

@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Execute four user-approved book-only OpenAlex combinations."""
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone

@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Offline first-pass judgements; never a discovery or model call."""
 import csv
 import json

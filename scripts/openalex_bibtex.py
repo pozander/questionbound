@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Fetch OpenAlex search results using PyAlex.
 
 The default output remains BibTeX for compatibility with the existing workflow.

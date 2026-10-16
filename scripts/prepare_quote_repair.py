@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Legacy: build a repair prompt from failed model-generated quotations."""
 import argparse
 import json

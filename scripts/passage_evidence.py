@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Prepare stable passage IDs and materialize model selections deterministically."""
 import argparse
 import hashlib

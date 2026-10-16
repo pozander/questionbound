@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Bounded abstract enrichment: Tavily discovers; deterministic code extracts."""
 
 from __future__ import annotations

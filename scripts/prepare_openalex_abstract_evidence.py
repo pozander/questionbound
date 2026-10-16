@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Turn OpenAlex Markdown packs into deduplicated, passage-ID evidence."""
 
 from __future__ import annotations

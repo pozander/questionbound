@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Offline lexical candidate filter, not automatic relevance screening."""
 import json
 import re

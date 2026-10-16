@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Extract a PDF into page-labelled Markdown files for text RAG indexing."""
 
 from __future__ import annotations

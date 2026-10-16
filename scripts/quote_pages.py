@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Prepare page-labelled evidence and check quotations without an LLM."""
 import argparse
 import hashlib

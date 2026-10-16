@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Download explicitly selected OpenAlex PDFs; no search or title matching."""
 
 import argparse

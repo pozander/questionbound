@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use QuestionBound, please cite it using this metadata."
+title: "QuestionBound"
+type: software
+authors:
+  - family-names: "Zander"
+    given-names: "Pär-Ola"
+    affiliation: "Södertörn University"
+repository-code: "https://github.com/pozander/questionbound"
+license: "MIT"

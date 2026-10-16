@@ -1,3 +1,5 @@
+// Author: Pär-Ola Zander, Södertörn University
+// SPDX-License-Identifier: MIT
 // Preflight guard for bounded text-only extraction, loaded through NODE_OPTIONS.
 const fs = require('node:fs');
 const models = require('./feynman_models.json');

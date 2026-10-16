@@ -2,15 +2,39 @@
 
 **Auditable literature research from a fixed question to verified quotation.**
 
-QuestionBound is a human-governed literature-research pipeline. It combines
+Created by Pär-Ola Zander, Södertörn University.
+
+QuestionBound is a human-governed literature-research pipeline.
+
+It is for academic literature search and synthesis that is more thorough
+than just asking an LLM on the topic, and less heavy-weight than a systematic
+literature review (such as https://github.com/sadeghanisi/SLR). It is much more
+transparent than agentic search or tools like Scite or Elicit, and customizable.
+Since a lot of work is carried out deterministically, and extensive results are saved
+locally, it is very token-economic and also enables local LLMs, as opposed to
+e.g. chatGPT or Elicit.
+
+
+It combines
 deterministic OpenAlex discovery, a bounded Tavily fallback for missing
 abstracts, explicit document selection, reproducible PDF retrieval,
 page-addressable evidence, and budget-limited Feynman synthesis.
 
-It is designed for conceptual research where preserving the meaning of the
-research question matters as much as finding papers. It is lighter than a full
-systematic-review platform and more inspectable than an autonomous research
-agent.
+It has been run via Codex, but is possible to use on Claude, Goose Desktop
+with minimal modification of the skill.
+
+## What you need
+- OpenAlex API key
+
+- Python 3.10 or newer
+- Poppler (`pdftotext` and `pdfinfo`) for PDF evidence preparation
+- Highly recommended: The skill.
+- Recommended: Tavily API key (for fallback complimentary searches)
+- Recommended: GPTme-RAG (or similar) for making RAGs. (https://github.com/gptme/gptme-rag)
+- Optional: Feynman for agentic analysis of output
+  (and Feynman needs an LLM provider, e.g. OpenAI, as well as node.js)
+
+Other recommended installations
 
 ## What Makes It Different
 
@@ -29,27 +53,11 @@ The result is not automatically a systematic literature review. QuestionBound
 provides a reproducible research trail and evidence controls without requiring
 PRISMA-scale procedure for every exploratory or conceptual question.
 
-## Division Of Labor
-
-- **Researcher:** owns meaning, scope, approval, and evidential standards.
-- **Codex:** proposes queries, runs deterministic tools, and audits provenance.
-- **OpenAlex:** supplies structured scholarly discovery and available full text.
-- **Tavily:** investigates a small number of declared metadata gaps.
-- **Local RAG:** retrieves passages from documents already selected and indexed.
-- **Feynman:** compares only approved evidence under an explicit cost ceiling.
-- **Local scripts:** insert exact stored text and reject unknown passage IDs.
-
-Read [AGENTS.md](AGENTS.md) for the research-contract rules that keep these
-roles separate.
+Read [AGENTS.md](AGENTS.md) for the research-contract rules that keep functions
+separate.
 
 ## Requirements
 
-- Python 3.10 or newer
-- An [OpenAlex API key](https://openalex.org/settings/api)
-- Poppler (`pdftotext` and `pdfinfo`) for PDF evidence preparation
-- Node.js and an installed Feynman CLI only for bounded Feynman runs
-- GPTme-RAG only when local semantic retrieval is wanted
-- A Tavily API key only for the optional abstract fallback
 
 Install the Python dependencies in a virtual environment:
 
@@ -58,8 +66,7 @@ python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
 ```
 
-Set credentials in the environment. Never put them in a query, result file, or
-command-line argument:
+Set credentials in the environment:
 
 ```bash
 export OPENALEX_API_KEY='your-openalex-api-key'
@@ -71,7 +78,37 @@ For Tavily, a private `.secrets/tavily.env` file is also supported. The entire
 `.secrets/` directory is ignored by Git.
 
 ## Quick Start
+(Install what you need)
 
+1. Make a research question in your favourite local-access LLM (Claude Desktop, CLI LLM, etc)
+2. Approve the suggestions from the LLM, or revise:
+3.  which will then call the scripts (see below)
+4. The subsequent steps depends on the situation; download the most interesting
+PDFs and RAG them, let Feynman take over, refine the search, etc.
+
+## Codex Skill
+
+The repository includes an installable Codex skill at
+`skills/questionbound/`. Install it locally:
+
+```bash
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+cp -R skills/questionbound "${CODEX_HOME:-$HOME/.codex}/skills/questionbound"
+```
+
+Open the repository as the current Codex project, then invoke it explicitly:
+
+```text
+Use $questionbound to investigate how efficiency is defined in Information
+Systems. Prepare the research brief and proposed searches, but do not execute
+until I approve them.
+```
+
+The skill can also be selected automatically for requests involving this
+pipeline. It supplies operating instructions, while the tested executable logic
+stays in the repository.
+
+## Script Calls Overview
 Preview an OpenAlex query without making a request:
 
 ```bash
@@ -129,7 +166,8 @@ catalogue, so a repeatable procedure does not imply permanently identical
 rankings.
 
 ### AIS Extended Scope
-
+(applies only for Information Systems, my own research field. But the idea can easily
+be re-scripted for any special journal area).
 `journal-scopes/ais-extended.json` contains the AIS Senior Scholars premier
 journals and SIG-recommended journals captured from the AIS Extended list. The
 scope is enforced with stored OpenAlex source IDs, not a text search for
@@ -224,27 +262,7 @@ See [FEYNMAN_README.md](FEYNMAN_README.md) for the full procedure and spending
 controls. See [PEARL_SEARCH_README.md](PEARL_SEARCH_README.md) for deterministic
 book-only citation chaining.
 
-## Codex Skill
 
-The repository includes an installable Codex skill at
-`skills/questionbound/`. Install it locally:
-
-```bash
-mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-cp -R skills/questionbound "${CODEX_HOME:-$HOME/.codex}/skills/questionbound"
-```
-
-Open the repository as the current Codex project, then invoke it explicitly:
-
-```text
-Use $questionbound to investigate how efficiency is defined in Information
-Systems. Prepare the research brief and proposed searches, but do not execute
-until I approve them.
-```
-
-The skill can also be selected automatically for requests involving this
-pipeline. It supplies operating instructions, while the tested executable logic
-stays in the repository.
 
 ## Repository Layout
 
@@ -254,6 +272,7 @@ tests/                           offline unit tests
 skills/questionbound/            installable Codex skill
 journal-scopes/ais-extended.json AIS journal registry
 literature-search-dictionary/    example dictionaries and query families
+CITATION.cff                     citation metadata
 AGENTS.md                        research-contract working agreement
 FEYNMAN_README.md                bounded synthesis and quotation procedure
 PEARL_SEARCH_README.md           citation-chain procedure
@@ -283,3 +302,5 @@ than weakening the research question.
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+Citation metadata is provided in [CITATION.cff](CITATION.cff).

@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Legacy: combine checked quote candidates, repairs, and visual review."""
 import argparse
 import json

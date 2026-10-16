@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Resolve a human-authored journal scope to auditable OpenAlex source IDs."""
 
 from __future__ import annotations

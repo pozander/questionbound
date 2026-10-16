@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Approved deterministic lexical retrieval experiment; no network calls."""
 import collections
 import hashlib

@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Assemble the experiment output and separate reviewer assessment."""
 import json
 from pathlib import Path

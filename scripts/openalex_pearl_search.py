@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """One-generation, books-only citation chaining. No LLM calls or PDF retrieval."""
 from __future__ import annotations
 

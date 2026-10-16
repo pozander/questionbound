@@ -1,3 +1,5 @@
+# Author: Pär-Ola Zander, Södertörn University
+# SPDX-License-Identifier: MIT
 """Run bounded, tool-free Feynman synthesis and collect session usage."""
 import argparse
 import json
