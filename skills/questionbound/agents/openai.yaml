@@ -1,0 +1,4 @@
+interface:
+  display_name: "QuestionBound"
+  short_description: "Auditable, bounded literature research"
+  default_prompt: "Use $questionbound to prepare an auditable research brief and run only the stages I approve."

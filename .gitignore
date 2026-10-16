@@ -1,0 +1,34 @@
+# Credentials and local configuration
+.secrets/
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Research artifacts and source documents
+downloads/
+rag/
+runs/
+results/
+outputs/
+output/
+notes/
+tmp/
+briefs/
+selections/
+progress.md
+*.pdf
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+*~

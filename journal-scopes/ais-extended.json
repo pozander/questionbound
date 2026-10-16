@@ -1,0 +1,1708 @@
+{
+  "schema_version": 1,
+  "scope_id": "ais-extended",
+  "display_name": "AIS information systems (extended)",
+  "description": "The AIS Senior Scholars premier journals plus every SIG-recommended journal listed on the same AIS page. Duplicate journals are retained in groups and resolved once in resolved_sources.",
+  "authority": {
+    "name": "Association for Information Systems",
+    "url": "https://aisnet.org/research/seniorscholarsbasket/",
+    "page_list_updated": "2025-07",
+    "captured_on": "2026-09-27"
+  },
+  "openalex_lookup_overrides": {
+    "The DATA BASE for Advances in Information Systems": "ACM SIGMIS Database the DATABASE for Advances in Information Systems"
+  },
+  "groups": [
+    {
+      "id": "premier",
+      "name": "Senior Scholars' List of Premier Journals",
+      "journals": [
+        "Decision Support Systems",
+        "European Journal of Information Systems",
+        "Information & Management",
+        "Information and Organization",
+        "Information Systems Journal",
+        "Information Systems Research",
+        "Journal of the Association for Information Systems",
+        "Journal of Information Technology",
+        "Journal of Management Information Systems",
+        "Journal of Strategic Information Systems",
+        "MIS Quarterly"
+      ]
+    },
+    {
+      "id": "sig-adit",
+      "name": "SIG ADIT | Adoption and Diffusion of IT",
+      "journals": [
+        "Internet Research",
+        "Information Technology & People"
+      ]
+    },
+    {
+      "id": "sig-ai",
+      "name": "SIG AI | Artificial Intelligence",
+      "journals": [
+        "IEEE Intelligent Systems",
+        "Intelligent Systems in Accounting, Finance and Management",
+        "AI Magazine",
+        "Expert Systems",
+        "Expert Systems with Applications",
+        "Decision Support Systems"
+      ]
+    },
+    {
+      "id": "sig-asys",
+      "name": "SIG ASYS | Accounting IS",
+      "journals": [
+        "Journal of Information Systems",
+        "International Journal of Accounting Information Systems",
+        "Journal of Emerging Technologies in Accounting",
+        "Intelligent Systems in Accounting, Finance and Management",
+        "International Journal of Digital Accounting Research"
+      ]
+    },
+    {
+      "id": "sig-bd",
+      "name": "SIG BD | Big Data Application Process",
+      "journals": [
+        "ACM Transactions on Knowledge Discovery from Data",
+        "Journal of Big Data",
+        "Decision Support Systems",
+        "Complexity",
+        "BioData Mining"
+      ]
+    },
+    {
+      "id": "sig-dsa",
+      "name": "SIG DSA | Decision Support and Analytics",
+      "journals": [
+        "Decision Support Systems",
+        "Decision Sciences Journal of Innovative Education",
+        "Information Systems Frontiers",
+        "Expert Systems with Applications",
+        "European Journal of Operational Research"
+      ]
+    },
+    {
+      "id": "sig-dspe",
+      "name": "SIG DSPE | Digital Sourcing, Platforms and Ecosystems",
+      "journals": [
+        "Journal of Systems and Software",
+        "Empirical Software Engineering",
+        "Information and Software Technology",
+        "IEEE Transactions on Software Engineering",
+        "IEEE Transactions on Engineering Management",
+        "Journal of Product Innovation Management"
+      ]
+    },
+    {
+      "id": "sig-ebiz",
+      "name": "SIG EBIZ | E-Business",
+      "journals": [
+        "Journal of the Association for Information Science and Technology",
+        "Electronic Commerce Research",
+        "Electronic Commerce Research and Applications",
+        "Journal of Informetrics"
+      ]
+    },
+    {
+      "id": "sig-ed",
+      "name": "SIG ED | Education",
+      "journals": [
+        "Communications of the Association for Information Systems",
+        "Journal of Information Systems Education",
+        "Australasian Journal of Information Systems"
+      ]
+    },
+    {
+      "id": "sig-egov",
+      "name": "SIG eGOV | Electronic Government",
+      "journals": [
+        "Government Information Quarterly",
+        "International Journal of Information Management",
+        "Information Systems Frontiers",
+        "Public Administration Review",
+        "Journal of Public Administration Research and Theory"
+      ]
+    },
+    {
+      "id": "sig-entsys",
+      "name": "SIG ENTSYS | Enterprise-level Information Systems",
+      "journals": [
+        "AIS Transactions on Enterprise Systems"
+      ]
+    },
+    {
+      "id": "sig-game",
+      "name": "SIG GAME",
+      "journals": [
+        "AIS Transactions on Human-Computer Interaction",
+        "Simulation & Gaming",
+        "Games and Culture",
+        "IEEE Transactions on Games",
+        "Decision Sciences Journal of Innovative Education",
+        "JMIR Serious Games",
+        "Entertainment Computing"
+      ]
+    },
+    {
+      "id": "sig-globdev",
+      "name": "SIG GlobDev | ICT and Global Development",
+      "journals": [
+        "Information Technology for Development"
+      ]
+    },
+    {
+      "id": "sig-green",
+      "name": "SIG Green | Green IS",
+      "journals": [
+        "MIS Quarterly Executive",
+        "Energy Informatics",
+        "Communications of the Association for Information Systems",
+        "Energy Research & Social Science",
+        "Journal of Industrial Ecology",
+        "Journal of Cleaner Production",
+        "Transportation Research Part D: Transport and Environment",
+        "Journal of Business Ethics",
+        "Organization & Environment",
+        "Technological Forecasting and Social Change",
+        "Business Strategy and the Environment"
+      ]
+    },
+    {
+      "id": "sig-hci",
+      "name": "SIG HCI | Human-Computer Interaction",
+      "journals": [
+        "AIS Transactions on Human-Computer Interaction",
+        "ACM Transactions on Computer-Human Interaction",
+        "International Journal of Human-Computer Studies",
+        "Human-Computer Interaction",
+        "Computers in Human Behavior"
+      ]
+    },
+    {
+      "id": "sig-health",
+      "name": "SIG Health | IT in Health Care",
+      "journals": [
+        "Journal of the American Medical Informatics Association",
+        "International Journal of Medical Informatics",
+        "Journal of Medical Internet Research",
+        "Health Systems",
+        "Health Policy and Technology"
+      ]
+    },
+    {
+      "id": "sig-is-core",
+      "name": "SIG IS-CORE | Cognitive Research",
+      "journals": [
+        "Organizational Behavior and Human Decision Processes",
+        "Decision Support Systems",
+        "Computers in Human Behavior"
+      ]
+    },
+    {
+      "id": "sig-isap",
+      "name": "SIG ISAP | IS/IT Issues in Asia Pacific",
+      "journals": [
+        "IEEE Transactions on Engineering Management",
+        "Data Science and Management",
+        "Pacific Asia Journal of the Association for Information Systems",
+        "Information Technology & People",
+        "Information Systems Frontiers"
+      ]
+    },
+    {
+      "id": "sig-itprojmgmt",
+      "name": "SIG ITProjMgmt | IT Project Management",
+      "journals": [
+        "Decision Support Systems",
+        "European Journal of Information Systems",
+        "Information & Management",
+        "Information and Organization",
+        "Information Systems Journal",
+        "Information Systems Research",
+        "Journal of the Association for Information Systems",
+        "Journal of Information Technology",
+        "Journal of Management Information Systems",
+        "Journal of Strategic Information Systems",
+        "MIS Quarterly"
+      ]
+    },
+    {
+      "id": "sig-lead",
+      "name": "SIG LEAD | Leadership in IT",
+      "journals": [
+        "Information Systems Management",
+        "The DATA BASE for Advances in Information Systems",
+        "Behaviour & Information Technology",
+        "Education and Information Technologies",
+        "Journal of Enterprise Information Management",
+        "International Journal of Human Capital and Information Technology Professionals"
+      ]
+    },
+    {
+      "id": "sig-osra",
+      "name": "SIG OSRA | Organizational Systems Research",
+      "journals": [
+        "Academy of Management Journal",
+        "Organization Science",
+        "Information Technology & People",
+        "Information Systems Frontiers",
+        "Enterprise Information Systems"
+      ]
+    },
+    {
+      "id": "sig-sand",
+      "name": "SIG SAND | Systems Analysis and Design",
+      "journals": [
+        "MIS Quarterly",
+        "Information Systems Research",
+        "Journal of the Association for Information Systems",
+        "Journal of Management Information Systems",
+        "Journal of Database Management",
+        "Database",
+        "IEEE Transactions on Knowledge and Data Engineering",
+        "ACM Transactions on Database Systems",
+        "Requirements Engineering",
+        "Information Systems Journal",
+        "European Journal of Information Systems"
+      ]
+    },
+    {
+      "id": "sig-sec",
+      "name": "SIG SEC | Information Security and Privacy",
+      "journals": [
+        "ACM Transactions on Privacy and Security",
+        "Computers & Security",
+        "Cybersecurity",
+        "IEEE Security & Privacy",
+        "IEEE Transactions on Dependable and Secure Computing",
+        "IEEE Transactions on Information Forensics and Security",
+        "Information & Computer Security",
+        "Journal of Cybersecurity"
+      ]
+    },
+    {
+      "id": "sig-si",
+      "name": "SIG SI | Social Inclusion",
+      "journals": [
+        "Communications of the Association for Information Systems",
+        "International Journal of Information Management",
+        "Information Technology & People"
+      ]
+    },
+    {
+      "id": "sig-sourcing",
+      "name": "SIG Sourcing | Advances in Sourcing",
+      "journals": [
+        "Information and Organization",
+        "Information & Management",
+        "Decision Support Systems",
+        "Decision Sciences",
+        "MIS Quarterly Executive"
+      ]
+    },
+    {
+      "id": "sig-svc",
+      "name": "SIG SVC | Services",
+      "journals": [
+        "Journal of Service Research",
+        "Journal of Service Management",
+        "Electronic Markets",
+        "Business & Information Systems Engineering",
+        "Journal of Service Management Research"
+      ]
+    }
+  ],
+  "resolved_sources": [
+    {
+      "ais_name": "Decision Support Systems",
+      "openalex_id": "S11479521",
+      "openalex_name": "Decision Support Systems",
+      "issn_l": "0167-9236",
+      "issns": [
+        "0167-9236",
+        "1873-5797"
+      ],
+      "groups": [
+        "premier",
+        "sig-ai",
+        "sig-bd",
+        "sig-dsa",
+        "sig-is-core",
+        "sig-itprojmgmt",
+        "sig-sourcing"
+      ]
+    },
+    {
+      "ais_name": "European Journal of Information Systems",
+      "openalex_id": "S116712389",
+      "openalex_name": "European Journal of Information Systems",
+      "issn_l": "0960-085X",
+      "issns": [
+        "0960-085X",
+        "1476-9344"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Information & Management",
+      "openalex_id": "S38883057",
+      "openalex_name": "Information & Management",
+      "issn_l": "0378-7206",
+      "issns": [
+        "0378-7206",
+        "1872-7530"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sourcing"
+      ]
+    },
+    {
+      "ais_name": "Information and Organization",
+      "openalex_id": "S35363033",
+      "openalex_name": "Information and Organization",
+      "issn_l": "1471-7727",
+      "issns": [
+        "1471-7727",
+        "1873-7919"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sourcing"
+      ]
+    },
+    {
+      "ais_name": "Information Systems Journal",
+      "openalex_id": "S92260147",
+      "openalex_name": "Information Systems Journal",
+      "issn_l": "1350-1917",
+      "issns": [
+        "1350-1917",
+        "1365-2575"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Information Systems Research",
+      "openalex_id": "S202812398",
+      "openalex_name": "Information Systems Research",
+      "issn_l": "1047-7047",
+      "issns": [
+        "1047-7047",
+        "1526-5536"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Journal of the Association for Information Systems",
+      "openalex_id": "S30879505",
+      "openalex_name": "Journal of the Association for Information Systems",
+      "issn_l": "1536-9323",
+      "issns": [
+        "1536-9323"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Journal of Information Technology",
+      "openalex_id": "S135086714",
+      "openalex_name": "Journal of Information Technology",
+      "issn_l": "0268-3962",
+      "issns": [
+        "0268-3962",
+        "1466-4437"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt"
+      ]
+    },
+    {
+      "ais_name": "Journal of Management Information Systems",
+      "openalex_id": "S9954729",
+      "openalex_name": "Journal of Management Information Systems",
+      "issn_l": "0742-1222",
+      "issns": [
+        "0742-1222",
+        "1557-928X"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Journal of Strategic Information Systems",
+      "openalex_id": "S6144335",
+      "openalex_name": "The Journal of Strategic Information Systems",
+      "issn_l": "0963-8687",
+      "issns": [
+        "0963-8687",
+        "1873-1198"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt"
+      ]
+    },
+    {
+      "ais_name": "MIS Quarterly",
+      "openalex_id": "S57293258",
+      "openalex_name": "MIS Quarterly",
+      "issn_l": "0276-7783",
+      "issns": [
+        "0276-7783",
+        "2162-9730"
+      ],
+      "groups": [
+        "premier",
+        "sig-itprojmgmt",
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Internet Research",
+      "openalex_id": "S63576417",
+      "openalex_name": "Internet Research",
+      "issn_l": "1066-2243",
+      "issns": [
+        "1066-2243",
+        "2054-5657"
+      ],
+      "groups": [
+        "sig-adit"
+      ]
+    },
+    {
+      "ais_name": "Information Technology & People",
+      "openalex_id": "S185256354",
+      "openalex_name": "Information Technology and People",
+      "issn_l": "0959-3845",
+      "issns": [
+        "0959-3845",
+        "1758-5813"
+      ],
+      "groups": [
+        "sig-adit",
+        "sig-isap",
+        "sig-osra",
+        "sig-si"
+      ]
+    },
+    {
+      "ais_name": "IEEE Intelligent Systems",
+      "openalex_id": "S114241109",
+      "openalex_name": "IEEE Intelligent Systems",
+      "issn_l": "1541-1672",
+      "issns": [
+        "1541-1672",
+        "1941-1294"
+      ],
+      "groups": [
+        "sig-ai"
+      ]
+    },
+    {
+      "ais_name": "Intelligent Systems in Accounting, Finance and Management",
+      "openalex_id": "S4394735491",
+      "openalex_name": "Intelligent systems in accounting, finance and management/Intelligent systems in accounting, finance & management",
+      "issn_l": "1055-615X",
+      "issns": [
+        "1055-615X",
+        "1099-1174",
+        "1550-1949",
+        "2160-0074"
+      ],
+      "groups": [
+        "sig-ai",
+        "sig-asys"
+      ]
+    },
+    {
+      "ais_name": "AI Magazine",
+      "openalex_id": "S163019073",
+      "openalex_name": "AI Magazine",
+      "issn_l": "0738-4602",
+      "issns": [
+        "0738-4602",
+        "2371-9621"
+      ],
+      "groups": [
+        "sig-ai"
+      ]
+    },
+    {
+      "ais_name": "Expert Systems",
+      "openalex_id": "S72232612",
+      "openalex_name": "Expert Systems",
+      "issn_l": "0266-4720",
+      "issns": [
+        "0266-4720",
+        "1468-0394"
+      ],
+      "groups": [
+        "sig-ai"
+      ]
+    },
+    {
+      "ais_name": "Expert Systems with Applications",
+      "openalex_id": "S13144211",
+      "openalex_name": "Expert Systems with Applications",
+      "issn_l": "0957-4174",
+      "issns": [
+        "0957-4174",
+        "1873-6793"
+      ],
+      "groups": [
+        "sig-ai",
+        "sig-dsa"
+      ]
+    },
+    {
+      "ais_name": "Journal of Information Systems",
+      "openalex_id": "S82262387",
+      "openalex_name": "Journal of Information Systems",
+      "issn_l": "0888-7985",
+      "issns": [
+        "0888-7985",
+        "1558-7959"
+      ],
+      "groups": [
+        "sig-asys"
+      ]
+    },
+    {
+      "ais_name": "International Journal of Accounting Information Systems",
+      "openalex_id": "S38901890",
+      "openalex_name": "International Journal of Accounting Information Systems",
+      "issn_l": "1467-0895",
+      "issns": [
+        "1467-0895",
+        "1873-4723"
+      ],
+      "groups": [
+        "sig-asys"
+      ]
+    },
+    {
+      "ais_name": "Journal of Emerging Technologies in Accounting",
+      "openalex_id": "S116843975",
+      "openalex_name": "Journal of Emerging Technologies in Accounting",
+      "issn_l": "1554-1908",
+      "issns": [
+        "1554-1908",
+        "1558-7940"
+      ],
+      "groups": [
+        "sig-asys"
+      ]
+    },
+    {
+      "ais_name": "International Journal of Digital Accounting Research",
+      "openalex_id": "S148936004",
+      "openalex_name": "The International Journal of Digital Accounting Research",
+      "issn_l": "1577-8517",
+      "issns": [
+        "1577-8517",
+        "2340-5058"
+      ],
+      "groups": [
+        "sig-asys"
+      ]
+    },
+    {
+      "ais_name": "ACM Transactions on Knowledge Discovery from Data",
+      "openalex_id": "S41523882",
+      "openalex_name": "ACM Transactions on Knowledge Discovery from Data",
+      "issn_l": "1556-4681",
+      "issns": [
+        "1556-4681",
+        "1556-472X"
+      ],
+      "groups": [
+        "sig-bd"
+      ]
+    },
+    {
+      "ais_name": "Journal of Big Data",
+      "openalex_id": "S2737955091",
+      "openalex_name": "Journal Of Big Data",
+      "issn_l": "2196-1115",
+      "issns": [
+        "2196-1115"
+      ],
+      "groups": [
+        "sig-bd"
+      ]
+    },
+    {
+      "ais_name": "Complexity",
+      "openalex_id": "S207319443",
+      "openalex_name": "Complexity",
+      "issn_l": "1076-2787",
+      "issns": [
+        "1076-2787",
+        "1099-0526"
+      ],
+      "groups": [
+        "sig-bd"
+      ]
+    },
+    {
+      "ais_name": "BioData Mining",
+      "openalex_id": "S84409260",
+      "openalex_name": "BioData Mining",
+      "issn_l": "1756-0381",
+      "issns": [
+        "1756-0381"
+      ],
+      "groups": [
+        "sig-bd"
+      ]
+    },
+    {
+      "ais_name": "Decision Sciences Journal of Innovative Education",
+      "openalex_id": "S168561851",
+      "openalex_name": "Decision Sciences Journal of Innovative Education",
+      "issn_l": "1540-4595",
+      "issns": [
+        "1540-4595",
+        "1540-4609"
+      ],
+      "groups": [
+        "sig-dsa",
+        "sig-game"
+      ]
+    },
+    {
+      "ais_name": "Information Systems Frontiers",
+      "openalex_id": "S181659395",
+      "openalex_name": "Information Systems Frontiers",
+      "issn_l": "1387-3326",
+      "issns": [
+        "1387-3326",
+        "1572-9419"
+      ],
+      "groups": [
+        "sig-dsa",
+        "sig-egov",
+        "sig-isap",
+        "sig-osra"
+      ]
+    },
+    {
+      "ais_name": "European Journal of Operational Research",
+      "openalex_id": "S103321696",
+      "openalex_name": "European Journal of Operational Research",
+      "issn_l": "0377-2217",
+      "issns": [
+        "0377-2217",
+        "1872-6860"
+      ],
+      "groups": [
+        "sig-dsa"
+      ]
+    },
+    {
+      "ais_name": "Journal of Systems and Software",
+      "openalex_id": "S37879656",
+      "openalex_name": "Journal of Systems and Software",
+      "issn_l": "0164-1212",
+      "issns": [
+        "0164-1212",
+        "1873-1228"
+      ],
+      "groups": [
+        "sig-dspe"
+      ]
+    },
+    {
+      "ais_name": "Empirical Software Engineering",
+      "openalex_id": "S109852484",
+      "openalex_name": "Empirical Software Engineering",
+      "issn_l": "1382-3256",
+      "issns": [
+        "1382-3256",
+        "1573-7616"
+      ],
+      "groups": [
+        "sig-dspe"
+      ]
+    },
+    {
+      "ais_name": "Information and Software Technology",
+      "openalex_id": "S205010575",
+      "openalex_name": "Information and Software Technology",
+      "issn_l": "0950-5849",
+      "issns": [
+        "0950-5849",
+        "1873-6025"
+      ],
+      "groups": [
+        "sig-dspe"
+      ]
+    },
+    {
+      "ais_name": "IEEE Transactions on Software Engineering",
+      "openalex_id": "S8351582",
+      "openalex_name": "IEEE Transactions on Software Engineering",
+      "issn_l": "0098-5589",
+      "issns": [
+        "0098-5589",
+        "1939-3520",
+        "2326-3881"
+      ],
+      "groups": [
+        "sig-dspe"
+      ]
+    },
+    {
+      "ais_name": "IEEE Transactions on Engineering Management",
+      "openalex_id": "S154533451",
+      "openalex_name": "IEEE Transactions on Engineering Management",
+      "issn_l": "0018-9391",
+      "issns": [
+        "0018-9391",
+        "1558-0040"
+      ],
+      "groups": [
+        "sig-dspe",
+        "sig-isap"
+      ]
+    },
+    {
+      "ais_name": "Journal of Product Innovation Management",
+      "openalex_id": "S93630570",
+      "openalex_name": "Journal of Product Innovation Management",
+      "issn_l": "0737-6782",
+      "issns": [
+        "0737-6782",
+        "1540-5885"
+      ],
+      "groups": [
+        "sig-dspe"
+      ]
+    },
+    {
+      "ais_name": "Journal of the Association for Information Science and Technology",
+      "openalex_id": "S4210197613",
+      "openalex_name": "Journal of the Association for Information Science and Technology",
+      "issn_l": "2330-1635",
+      "issns": [
+        "2330-1635",
+        "2330-1643"
+      ],
+      "groups": [
+        "sig-ebiz"
+      ]
+    },
+    {
+      "ais_name": "Electronic Commerce Research",
+      "openalex_id": "S205929853",
+      "openalex_name": "Electronic Commerce Research",
+      "issn_l": "1389-5753",
+      "issns": [
+        "1389-5753",
+        "1572-9362"
+      ],
+      "groups": [
+        "sig-ebiz"
+      ]
+    },
+    {
+      "ais_name": "Electronic Commerce Research and Applications",
+      "openalex_id": "S187709482",
+      "openalex_name": "Electronic Commerce Research and Applications",
+      "issn_l": "1567-4223",
+      "issns": [
+        "1567-4223",
+        "1873-7846"
+      ],
+      "groups": [
+        "sig-ebiz"
+      ]
+    },
+    {
+      "ais_name": "Journal of Informetrics",
+      "openalex_id": "S205292342",
+      "openalex_name": "Journal of Informetrics",
+      "issn_l": "1751-1577",
+      "issns": [
+        "1751-1577",
+        "1875-5879"
+      ],
+      "groups": [
+        "sig-ebiz"
+      ]
+    },
+    {
+      "ais_name": "Communications of the Association for Information Systems",
+      "openalex_id": "S4210239688",
+      "openalex_name": "Communications of the Association for Information Systems",
+      "issn_l": "1529-3181",
+      "issns": [
+        "1529-3181"
+      ],
+      "groups": [
+        "sig-ed",
+        "sig-green",
+        "sig-si"
+      ]
+    },
+    {
+      "ais_name": "Journal of Information Systems Education",
+      "openalex_id": "S5407008305",
+      "openalex_name": "Journal of Information Systems Education",
+      "issn_l": "2574-3872",
+      "issns": [
+        "2574-3872"
+      ],
+      "groups": [
+        "sig-ed"
+      ]
+    },
+    {
+      "ais_name": "Australasian Journal of Information Systems",
+      "openalex_id": "S105581714",
+      "openalex_name": "AJIS. Australasian journal of information systems/AJIS. Australian journal of information systems/Australian journal of information systems",
+      "issn_l": "1039-7841",
+      "issns": [
+        "1039-7841",
+        "1326-2238",
+        "1449-8618"
+      ],
+      "groups": [
+        "sig-ed"
+      ]
+    },
+    {
+      "ais_name": "Government Information Quarterly",
+      "openalex_id": "S201710173",
+      "openalex_name": "Government Information Quarterly",
+      "issn_l": "0740-624X",
+      "issns": [
+        "0740-624X",
+        "1872-9517"
+      ],
+      "groups": [
+        "sig-egov"
+      ]
+    },
+    {
+      "ais_name": "International Journal of Information Management",
+      "openalex_id": "S189354248",
+      "openalex_name": "International Journal of Information Management",
+      "issn_l": "0268-4012",
+      "issns": [
+        "0268-4012",
+        "1873-4707"
+      ],
+      "groups": [
+        "sig-egov",
+        "sig-si"
+      ]
+    },
+    {
+      "ais_name": "Public Administration Review",
+      "openalex_id": "S76877748",
+      "openalex_name": "Public Administration Review",
+      "issn_l": "0033-3352",
+      "issns": [
+        "0033-3352",
+        "1540-6210"
+      ],
+      "groups": [
+        "sig-egov"
+      ]
+    },
+    {
+      "ais_name": "Journal of Public Administration Research and Theory",
+      "openalex_id": "S169433491",
+      "openalex_name": "Journal of Public Administration Research and Theory",
+      "issn_l": "1053-1858",
+      "issns": [
+        "1053-1858",
+        "1477-9803"
+      ],
+      "groups": [
+        "sig-egov"
+      ]
+    },
+    {
+      "ais_name": "AIS Transactions on Enterprise Systems",
+      "openalex_id": "S4210202297",
+      "openalex_name": "AIS Transactions on Enterprise Systems",
+      "issn_l": "1867-7134",
+      "issns": [
+        "1867-7134"
+      ],
+      "groups": [
+        "sig-entsys"
+      ]
+    },
+    {
+      "ais_name": "AIS Transactions on Human-Computer Interaction",
+      "openalex_id": "S4210193050",
+      "openalex_name": "AIS Transactions on Human-Computer Interaction",
+      "issn_l": "1944-3900",
+      "issns": [
+        "1944-3900"
+      ],
+      "groups": [
+        "sig-game",
+        "sig-hci"
+      ]
+    },
+    {
+      "ais_name": "Simulation & Gaming",
+      "openalex_id": "S112620617",
+      "openalex_name": "Simulation & Gaming",
+      "issn_l": "1046-8781",
+      "issns": [
+        "1046-8781",
+        "1552-826X"
+      ],
+      "groups": [
+        "sig-game"
+      ]
+    },
+    {
+      "ais_name": "Games and Culture",
+      "openalex_id": "S186921036",
+      "openalex_name": "Games and Culture",
+      "issn_l": "1555-4120",
+      "issns": [
+        "1555-4120",
+        "1555-4139"
+      ],
+      "groups": [
+        "sig-game"
+      ]
+    },
+    {
+      "ais_name": "IEEE Transactions on Games",
+      "openalex_id": "S4210224842",
+      "openalex_name": "IEEE Transactions on Games",
+      "issn_l": "2475-1502",
+      "issns": [
+        "2475-1502",
+        "2475-1510"
+      ],
+      "groups": [
+        "sig-game"
+      ]
+    },
+    {
+      "ais_name": "JMIR Serious Games",
+      "openalex_id": "S4210175137",
+      "openalex_name": "JMIR Serious Games",
+      "issn_l": "2291-9279",
+      "issns": [
+        "2291-9279"
+      ],
+      "groups": [
+        "sig-game"
+      ]
+    },
+    {
+      "ais_name": "Entertainment Computing",
+      "openalex_id": "S185496201",
+      "openalex_name": "Entertainment Computing",
+      "issn_l": "1875-9521",
+      "issns": [
+        "1875-9521",
+        "1875-953X"
+      ],
+      "groups": [
+        "sig-game"
+      ]
+    },
+    {
+      "ais_name": "Information Technology for Development",
+      "openalex_id": "S119528808",
+      "openalex_name": "Information Technology for Development",
+      "issn_l": "0268-1102",
+      "issns": [
+        "0268-1102",
+        "1554-0170"
+      ],
+      "groups": [
+        "sig-globdev"
+      ]
+    },
+    {
+      "ais_name": "MIS Quarterly Executive",
+      "openalex_id": "S48312676",
+      "openalex_name": "MIS Quarterly Executive",
+      "issn_l": "1540-1960",
+      "issns": [
+        "1540-1960",
+        "1540-1979"
+      ],
+      "groups": [
+        "sig-green",
+        "sig-sourcing"
+      ]
+    },
+    {
+      "ais_name": "Energy Informatics",
+      "openalex_id": "S3035173479",
+      "openalex_name": "Energy Informatics",
+      "issn_l": "2520-8942",
+      "issns": [
+        "2520-8942"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Energy Research & Social Science",
+      "openalex_id": "S2764593084",
+      "openalex_name": "Energy Research & Social Science",
+      "issn_l": "2214-6296",
+      "issns": [
+        "2214-6296",
+        "2214-6326"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Journal of Industrial Ecology",
+      "openalex_id": "S203731762",
+      "openalex_name": "Journal of Industrial Ecology",
+      "issn_l": "1088-1980",
+      "issns": [
+        "1088-1980",
+        "1530-9290"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Journal of Cleaner Production",
+      "openalex_id": "S58516903",
+      "openalex_name": "Journal of Cleaner Production",
+      "issn_l": "0959-6526",
+      "issns": [
+        "0959-6526",
+        "1879-1786"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Transportation Research Part D: Transport and Environment",
+      "openalex_id": "S45181156",
+      "openalex_name": "Transportation Research Part D Transport and Environment",
+      "issn_l": "1361-9209",
+      "issns": [
+        "1361-9209",
+        "1879-2340"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Journal of Business Ethics",
+      "openalex_id": "S76633192",
+      "openalex_name": "Journal of Business Ethics",
+      "issn_l": "0167-4544",
+      "issns": [
+        "0167-4544",
+        "1573-0697"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Organization & Environment",
+      "openalex_id": "S94552155",
+      "openalex_name": "Organization & Environment",
+      "issn_l": "1086-0266",
+      "issns": [
+        "1086-0266",
+        "1552-7417"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Technological Forecasting and Social Change",
+      "openalex_id": "S39307421",
+      "openalex_name": "Technological Forecasting and Social Change",
+      "issn_l": "0040-1625",
+      "issns": [
+        "0040-1625",
+        "1873-5509"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "Business Strategy and the Environment",
+      "openalex_id": "S205793605",
+      "openalex_name": "Business Strategy and the Environment",
+      "issn_l": "0964-4733",
+      "issns": [
+        "0964-4733",
+        "1099-0836"
+      ],
+      "groups": [
+        "sig-green"
+      ]
+    },
+    {
+      "ais_name": "ACM Transactions on Computer-Human Interaction",
+      "openalex_id": "S89276529",
+      "openalex_name": "ACM Transactions on Computer-Human Interaction",
+      "issn_l": "1073-0516",
+      "issns": [
+        "1073-0516",
+        "1557-7325"
+      ],
+      "groups": [
+        "sig-hci"
+      ]
+    },
+    {
+      "ais_name": "International Journal of Human-Computer Studies",
+      "openalex_id": "S4210190811",
+      "openalex_name": "International Journal of Human-Computer Studies",
+      "issn_l": "1071-5819",
+      "issns": [
+        "1071-5819",
+        "1095-9300"
+      ],
+      "groups": [
+        "sig-hci"
+      ]
+    },
+    {
+      "ais_name": "Human-Computer Interaction",
+      "openalex_id": "S2481449237",
+      "openalex_name": "Human-Computer Interaction",
+      "issn_l": "0737-0024",
+      "issns": [
+        "0737-0024",
+        "1532-7051"
+      ],
+      "groups": [
+        "sig-hci"
+      ]
+    },
+    {
+      "ais_name": "Computers in Human Behavior",
+      "openalex_id": "S204030396",
+      "openalex_name": "Computers in Human Behavior",
+      "issn_l": "0747-5632",
+      "issns": [
+        "0747-5632",
+        "1873-7692"
+      ],
+      "groups": [
+        "sig-hci",
+        "sig-is-core"
+      ]
+    },
+    {
+      "ais_name": "Journal of the American Medical Informatics Association",
+      "openalex_id": "S129839026",
+      "openalex_name": "Journal of the American Medical Informatics Association",
+      "issn_l": "1067-5027",
+      "issns": [
+        "1067-5027",
+        "1527-974X"
+      ],
+      "groups": [
+        "sig-health"
+      ]
+    },
+    {
+      "ais_name": "International Journal of Medical Informatics",
+      "openalex_id": "S53142634",
+      "openalex_name": "International Journal of Medical Informatics",
+      "issn_l": "1386-5056",
+      "issns": [
+        "1386-5056",
+        "1872-8243"
+      ],
+      "groups": [
+        "sig-health"
+      ]
+    },
+    {
+      "ais_name": "Journal of Medical Internet Research",
+      "openalex_id": "S17147534",
+      "openalex_name": "Journal of Medical Internet Research",
+      "issn_l": "1438-8871",
+      "issns": [
+        "1438-8871",
+        "1439-4456"
+      ],
+      "groups": [
+        "sig-health"
+      ]
+    },
+    {
+      "ais_name": "Health Systems",
+      "openalex_id": "S2765005283",
+      "openalex_name": "Health Systems",
+      "issn_l": "2047-6965",
+      "issns": [
+        "2047-6965",
+        "2047-6973"
+      ],
+      "groups": [
+        "sig-health"
+      ]
+    },
+    {
+      "ais_name": "Health Policy and Technology",
+      "openalex_id": "S2764671021",
+      "openalex_name": "Health Policy and Technology",
+      "issn_l": "2211-8837",
+      "issns": [
+        "2211-8837",
+        "2211-8845"
+      ],
+      "groups": [
+        "sig-health"
+      ]
+    },
+    {
+      "ais_name": "Organizational Behavior and Human Decision Processes",
+      "openalex_id": "S64744539",
+      "openalex_name": "Organizational Behavior and Human Decision Processes",
+      "issn_l": "0749-5978",
+      "issns": [
+        "0749-5978",
+        "1095-9920"
+      ],
+      "groups": [
+        "sig-is-core"
+      ]
+    },
+    {
+      "ais_name": "Data Science and Management",
+      "openalex_id": "S4210200631",
+      "openalex_name": "Data Science and Management",
+      "issn_l": "2666-7649",
+      "issns": [
+        "2666-7649"
+      ],
+      "groups": [
+        "sig-isap"
+      ]
+    },
+    {
+      "ais_name": "Pacific Asia Journal of the Association for Information Systems",
+      "openalex_id": "S2765074683",
+      "openalex_name": "Pacific Asia journal of the Association for Information Systems",
+      "issn_l": "1943-7536",
+      "issns": [
+        "1943-7536",
+        "1943-7544"
+      ],
+      "groups": [
+        "sig-isap"
+      ]
+    },
+    {
+      "ais_name": "Information Systems Management",
+      "openalex_id": "S124504522",
+      "openalex_name": "Information Systems Management",
+      "issn_l": "1058-0530",
+      "issns": [
+        "1058-0530",
+        "1934-8703"
+      ],
+      "groups": [
+        "sig-lead"
+      ]
+    },
+    {
+      "ais_name": "The DATA BASE for Advances in Information Systems",
+      "openalex_id": "S4210234096",
+      "openalex_name": "ACM SIGMIS Database the DATABASE for Advances in Information Systems",
+      "issn_l": "0095-0033",
+      "issns": [
+        "0095-0033",
+        "1532-0936",
+        "2331-1584",
+        "2331-1622"
+      ],
+      "groups": [
+        "sig-lead"
+      ]
+    },
+    {
+      "ais_name": "Behaviour & Information Technology",
+      "openalex_id": "S123849098",
+      "openalex_name": "Behaviour and Information Technology",
+      "issn_l": "0144-929X",
+      "issns": [
+        "0144-929X",
+        "1362-3001"
+      ],
+      "groups": [
+        "sig-lead"
+      ]
+    },
+    {
+      "ais_name": "Education and Information Technologies",
+      "openalex_id": "S166722454",
+      "openalex_name": "Education and Information Technologies",
+      "issn_l": "1360-2357",
+      "issns": [
+        "1360-2357",
+        "1573-7608"
+      ],
+      "groups": [
+        "sig-lead"
+      ]
+    },
+    {
+      "ais_name": "Journal of Enterprise Information Management",
+      "openalex_id": "S141478581",
+      "openalex_name": "Journal of Enterprise Information Management",
+      "issn_l": "1741-0398",
+      "issns": [
+        "1741-0398",
+        "1758-7409"
+      ],
+      "groups": [
+        "sig-lead"
+      ]
+    },
+    {
+      "ais_name": "International Journal of Human Capital and Information Technology Professionals",
+      "openalex_id": "S193803878",
+      "openalex_name": "International Journal of Human Capital and Information Technology Professionals",
+      "issn_l": "1947-3478",
+      "issns": [
+        "1947-3478",
+        "1947-3486"
+      ],
+      "groups": [
+        "sig-lead"
+      ]
+    },
+    {
+      "ais_name": "Academy of Management Journal",
+      "openalex_id": "S117778295",
+      "openalex_name": "Academy of Management Journal",
+      "issn_l": "0001-4273",
+      "issns": [
+        "0001-4273",
+        "1948-0989"
+      ],
+      "groups": [
+        "sig-osra"
+      ]
+    },
+    {
+      "ais_name": "Organization Science",
+      "openalex_id": "S206124708",
+      "openalex_name": "Organization Science",
+      "issn_l": "1047-7039",
+      "issns": [
+        "1047-7039",
+        "1526-5455"
+      ],
+      "groups": [
+        "sig-osra"
+      ]
+    },
+    {
+      "ais_name": "Enterprise Information Systems",
+      "openalex_id": "S24861202",
+      "openalex_name": "Enterprise Information Systems",
+      "issn_l": "1751-7575",
+      "issns": [
+        "1751-7575",
+        "1751-7583"
+      ],
+      "groups": [
+        "sig-osra"
+      ]
+    },
+    {
+      "ais_name": "Journal of Database Management",
+      "openalex_id": "S73024538",
+      "openalex_name": "Journal of Database Management",
+      "issn_l": "1063-8016",
+      "issns": [
+        "1063-8016",
+        "1533-8010"
+      ],
+      "groups": [
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Database",
+      "openalex_id": "S4210201630",
+      "openalex_name": "Database",
+      "issn_l": "1758-0463",
+      "issns": [
+        "1758-0463"
+      ],
+      "groups": [
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "IEEE Transactions on Knowledge and Data Engineering",
+      "openalex_id": "S30698027",
+      "openalex_name": "IEEE Transactions on Knowledge and Data Engineering",
+      "issn_l": "1041-4347",
+      "issns": [
+        "1041-4347",
+        "1558-2191",
+        "2326-3865"
+      ],
+      "groups": [
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "ACM Transactions on Database Systems",
+      "openalex_id": "S90119964",
+      "openalex_name": "ACM Transactions on Database Systems",
+      "issn_l": "0362-5915",
+      "issns": [
+        "0362-5915",
+        "1557-4644"
+      ],
+      "groups": [
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "Requirements Engineering",
+      "openalex_id": "S207090427",
+      "openalex_name": "Requirements Engineering",
+      "issn_l": "0947-3602",
+      "issns": [
+        "0947-3602",
+        "1432-010X"
+      ],
+      "groups": [
+        "sig-sand"
+      ]
+    },
+    {
+      "ais_name": "ACM Transactions on Privacy and Security",
+      "openalex_id": "S4210174050",
+      "openalex_name": "ACM Transactions on Privacy and Security",
+      "issn_l": "2471-2566",
+      "issns": [
+        "2471-2566",
+        "2471-2574"
+      ],
+      "groups": [
+        "sig-sec"
+      ]
+    },
+    {
+      "ais_name": "Computers & Security",
+      "openalex_id": "S12529635",
+      "openalex_name": "Computers & Security",
+      "issn_l": "0167-4048",
+      "issns": [
+        "0167-4048",
+        "1872-6208"
+      ],
+      "groups": [
+        "sig-sec"
+      ]
+    },
+    {
+      "ais_name": "Cybersecurity",
+      "openalex_id": "S3035238565",
+      "openalex_name": "Cybersecurity",
+      "issn_l": "2523-3246",
+      "issns": [
+        "2523-3246"
+      ],
+      "groups": [
+        "sig-sec"
+      ]
+    },
+    {
+      "ais_name": "IEEE Security & Privacy",
+      "openalex_id": "S61906035",
+      "openalex_name": "IEEE Security & Privacy",
+      "issn_l": "1540-7993",
+      "issns": [
+        "1540-7993",
+        "1558-4046"
+      ],
+      "groups": [
+        "sig-sec"
+      ]
+    },
+    {
+      "ais_name": "IEEE Transactions on Dependable and Secure Computing",
+      "openalex_id": "S133795288",
+      "openalex_name": "IEEE Transactions on Dependable and Secure Computing",
+      "issn_l": "1545-5971",
+      "issns": [
+        "1545-5971",
+        "1941-0018",
+        "2160-9209"
+      ],
+      "groups": [
+        "sig-sec"
+      ]
+    },
+    {
+      "ais_name": "IEEE Transactions on Information Forensics and Security",
+      "openalex_id": "S61310614",
+      "openalex_name": "IEEE Transactions on Information Forensics and Security",
+      "issn_l": "1556-6013",
+      "issns": [
+        "1556-6013",
+        "1556-6021"
+      ],
+      "groups": [
+        "sig-sec"
+      ]
+    },
+    {
+      "ais_name": "Information & Computer Security",
+      "openalex_id": "S85012289",
+      "openalex_name": "International Journal of Information and Computer Security",
+      "issn_l": "1744-1765",
+      "issns": [
+        "1744-1765",
+        "1744-1773"
+      ],
+      "groups": [
+        "sig-sec"
+      ],
+      "resolution_note": "Multiple exact-title journal records; selected the one with the largest OpenAlex works_count. Candidates: S85012289, S4210195545"
+    },
+    {
+      "ais_name": "Journal of Cybersecurity",
+      "openalex_id": "S2735156331",
+      "openalex_name": "Journal of Cybersecurity",
+      "issn_l": "2057-2085",
+      "issns": [
+        "2057-2085",
+        "2057-2093"
+      ],
+      "groups": [
+        "sig-sec"
+      ]
+    },
+    {
+      "ais_name": "Decision Sciences",
+      "openalex_id": "S177792750",
+      "openalex_name": "Decision Sciences",
+      "issn_l": "0011-7315",
+      "issns": [
+        "0011-7315",
+        "1540-5915"
+      ],
+      "groups": [
+        "sig-sourcing"
+      ]
+    },
+    {
+      "ais_name": "Journal of Service Research",
+      "openalex_id": "S125608309",
+      "openalex_name": "Journal of Service Research",
+      "issn_l": "1094-6705",
+      "issns": [
+        "1094-6705",
+        "1552-7379"
+      ],
+      "groups": [
+        "sig-svc"
+      ]
+    },
+    {
+      "ais_name": "Journal of Service Management",
+      "openalex_id": "S107183665",
+      "openalex_name": "Journal of service management",
+      "issn_l": "1757-5818",
+      "issns": [
+        "1757-5818",
+        "1757-5826"
+      ],
+      "groups": [
+        "sig-svc"
+      ]
+    },
+    {
+      "ais_name": "Electronic Markets",
+      "openalex_id": "S137519996",
+      "openalex_name": "Electronic Markets",
+      "issn_l": "1019-6781",
+      "issns": [
+        "1019-6781",
+        "1422-8890"
+      ],
+      "groups": [
+        "sig-svc"
+      ]
+    },
+    {
+      "ais_name": "Business & Information Systems Engineering",
+      "openalex_id": "S27339233",
+      "openalex_name": "Business & Information Systems Engineering",
+      "issn_l": "1867-0202",
+      "issns": [
+        "1867-0202",
+        "2363-7005"
+      ],
+      "groups": [
+        "sig-svc"
+      ]
+    },
+    {
+      "ais_name": "Journal of Service Management Research",
+      "openalex_id": "S4210181162",
+      "openalex_name": "Journal of Service Management Research",
+      "issn_l": "2511-8676",
+      "issns": [
+        "2511-8676"
+      ],
+      "groups": [
+        "sig-svc"
+      ]
+    }
+  ],
+  "unresolved_sources": []
+}
