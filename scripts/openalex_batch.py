@@ -133,11 +133,18 @@ def run_batch(
     def admit(pool: ThreadPoolExecutor) -> None:
         nonlocal pending
         while pending and len(running) < workers and not stop_admission:
-            slot = next(
+            # Start the slower semantic lane as early as possible, while its
+            # separate cap prevents concurrent semantic calls from provoking
+            # OpenAlex's tighter endpoint rate limit.
+            semantic_slot = next(
                 (index for index, item in enumerate(pending)
-                 if item["mode"] != "semantic" or semantic_running() < semantic_workers),
-                None,
+                 if item["mode"] == "semantic"), None
+            ) if semantic_running() < semantic_workers else None
+            lexical_slot = next(
+                (index for index, item in enumerate(pending)
+                 if item["mode"] != "semantic"), None
             )
+            slot = semantic_slot if semantic_slot is not None else lexical_slot
             if slot is None:
                 return
             item = pending.pop(slot)
@@ -177,8 +184,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--format", choices=tuple(FORMATS), default="json")
     parser.add_argument("--workers", type=int, default=3,
                         help="Maximum simultaneous query processes (default: 3).")
-    parser.add_argument("--semantic-workers", type=int, default=2,
-                        help="Maximum simultaneous semantic queries (default: 2).")
+    parser.add_argument("--semantic-workers", type=int, default=1,
+                        help="Maximum simultaneous semantic queries (default: 1).")
     parser.add_argument("--python", default=sys.executable)
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args(argv)

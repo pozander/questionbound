@@ -66,6 +66,25 @@ class OpenAlexBatchTest(unittest.TestCase):
         self.assertLessEqual(semantic_peak, 2)
         self.assertTrue(all(item["status"] == "completed" for item in results))
 
+    def test_semantic_lane_starts_even_when_manifest_lists_lexical_first(self):
+        queries = [
+            {"id": f"l{i}", "query": "q", "mode": "lexical", "max_results": 10,
+             "manifest_index": i} for i in range(1, 5)
+        ] + [{"id": "s1", "query": "q", "mode": "semantic", "max_results": 10,
+              "manifest_index": 5}]
+        started = []
+        lock = threading.Lock()
+
+        def runner(command):
+            with lock:
+                started.append(command[command.index("--search-mode") + 1])
+            time.sleep(0.02)
+            return subprocess.CompletedProcess(command, 0, "ok", "")
+
+        batch.run_batch({}, queries, self.root, "json", 3, 1,
+                        sys.executable, False, runner)
+        self.assertIn("semantic", started[:3])
+
     def test_hard_stop_leaves_unadmitted_queries_unattempted(self):
         queries = [{"id": str(i), "query": "q", "mode": "lexical",
                     "max_results": 10, "manifest_index": i} for i in range(1, 6)]

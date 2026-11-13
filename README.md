@@ -197,7 +197,7 @@ them with bounded process concurrency:
   --output-dir runs/topic/results \
   --format json \
   --workers 3 \
-  --semantic-workers 2 \
+  --semantic-workers 1 \
   --dry-run
 ```
 
@@ -205,7 +205,9 @@ Remove `--dry-run` after checking the plan. Each query still produces its own
 artifact, and `openalex-batch-audit.json` records route, mode, output, status,
 diagnostics, and elapsed time. Separate child processes isolate PyAlex's global
 configuration. The scheduler defaults to three simultaneous queries and no more
-than two semantic queries. It makes no automatic retries and stops admitting new
+than one semantic query. The slower semantic lane starts alongside the lexical
+lane instead of waiting for every lexical query to finish. It makes no automatic
+retries and stops admitting new
 queries after an authentication, quota, or rate-limit response. Other queries
 already in flight are allowed to finish and the remainder are marked
 `not_attempted`. Lower `--workers` if OpenAlex asks clients to reduce request

@@ -95,7 +95,8 @@ and returned records; do not promise that a later run will rank identically.
 
 For multiple approved queries, prefer `openalex_batch.py` with the fixed query
 manifest rather than an ad hoc shell loop. Its default boundary is three query
-processes and at most two simultaneous semantic queries. It preserves a separate
+processes and at most one simultaneous semantic query. The semantic lane starts
+alongside the lexical lane. It preserves a separate
 result per query and writes `openalex-batch-audit.json`. It makes no automatic
 retries and stops admitting new work after authentication, quota, or rate-limit
 responses; already-running calls may finish. Use `--dry-run` before the live
