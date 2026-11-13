@@ -125,6 +125,9 @@ def identity_match(record: dict[str, Any], result: dict[str, Any]) -> tuple[bool
     for doi in record.get("doi_aliases") or [normalized_doi(record.get("doi"))]:
         if doi and doi in haystack: return True, 1.0, ["doi"]
     similarity = title_similarity(record.get("title"), result.get("title"))
+    expected_title = canonical_title(record.get("title"))
+    if expected_title and expected_title in normalized_text(haystack):
+        similarity = 1.0
     surname = normalized_text(first_author_surname(record)); author = bool(surname and surname in normalized_text(haystack))
     year = compact_space(record.get("year")); year_match = bool(year and re.search(rf"(?<!\d){re.escape(year)}(?!\d)",haystack))
     score = .78*similarity + .14*author + .08*year_match

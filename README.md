@@ -165,6 +165,54 @@ their route labels, then deduplicate by OpenAlex work ID. OpenAlex is a changing
 catalogue, so a repeatable procedure does not imply permanently identical
 rankings.
 
+For a larger approved search, put all routes in one fixed JSON manifest and run
+them with bounded process concurrency:
+
+```json
+{
+  "date_range": [2000, 2026],
+  "queries": [
+    {
+      "id": "lexical-01",
+      "route": "A",
+      "mode": "lexical",
+      "journal_scope": "ais-extended",
+      "max_results": 30,
+      "query": "\"first-order barriers\" AND \"second-order barriers\""
+    },
+    {
+      "id": "semantic-01",
+      "route": "C",
+      "mode": "semantic",
+      "max_results": 50,
+      "query": "Research explicitly distinguishing first- and second-order barriers."
+    }
+  ]
+}
+```
+
+```bash
+.venv/bin/python scripts/openalex_batch.py \
+  --manifest runs/topic/query-manifest.json \
+  --output-dir runs/topic/results \
+  --format json \
+  --workers 3 \
+  --semantic-workers 2 \
+  --dry-run
+```
+
+Remove `--dry-run` after checking the plan. Each query still produces its own
+artifact, and `openalex-batch-audit.json` records route, mode, output, status,
+diagnostics, and elapsed time. Separate child processes isolate PyAlex's global
+configuration. The scheduler defaults to three simultaneous queries and no more
+than two semantic queries. It makes no automatic retries and stops admitting new
+queries after an authentication, quota, or rate-limit response. Other queries
+already in flight are allowed to finish and the remainder are marked
+`not_attempted`. Lower `--workers` if OpenAlex asks clients to reduce request
+frequency. Because OpenAlex rejects date filters combined with semantic search,
+the semantic route fetches its bounded ranked set and applies the manifest's date
+range locally; lexical routes keep server-side date filters.
+
 ### AIS Extended Scope
 (applies only for Information Systems, my own research field. But the idea can easily
 be re-scripted for any special journal area).
@@ -197,6 +245,62 @@ three direct fetches. Hard ceilings prevent the fallback from becoming an
 unbounded web-research agent. Every query, URL, extraction decision, failure,
 and reported credit use is written to the audit artifact.
 
+If a separately approved bounded source scout has located abstract pages that
+the Tavily pass missed, materialize them without asking the model to transcribe
+the abstract:
+
+```bash
+.venv/bin/python scripts/materialize_agentic_abstracts.py \
+  --input results/enriched.json \
+  --scout-results results/agentic-scout/scout-results.json \
+  --pdf-dir downloads/topic \
+  --output results/abstracts-complete.json \
+  --audit-output results/abstract-materialization-audit.json \
+  --dry-run
+```
+
+After inspection, remove `--dry-run`. The materializer first checks an already
+validated exact-ID PDF, then the scout's fixed candidate URLs, and finally an
+exact-DOI OpenAIRE record when a publisher blocks direct fetching. It performs
+no title search and no paid model call. It requires explicit abstract metadata
+or a visible abstract label, rechecks work identity, records every rejected
+route, and refuses to overwrite existing artifacts.
+
+### Tavily Passage-Attribution Search
+
+For a bounded non-OpenAlex search whose target is a remembered phrase or
+passage, prepare an approved JSON manifest:
+
+```json
+{
+  "research_question": "Who wrote the remembered passage?",
+  "approval": "Approved by the researcher on YYYY-MM-DD",
+  "language_boundary": "English only",
+  "queries": [
+    {
+      "id": "exact-01",
+      "query": "\"enters triumphantly\" \"leaves diminished\"",
+      "rationale": "Exact remembered wording"
+    }
+  ]
+}
+```
+
+Preview the request without using a search credit:
+
+```bash
+.venv/bin/python scripts/tavily_phrase_search.py \
+  --manifest selections/passage-search.json \
+  --output results/passage-search-audit.json \
+  --dry-run
+```
+
+Remove `--dry-run` only after checking the manifest against the approved
+research brief. The script has a hard ceiling of 30 queries, makes no automatic
+retries, refuses to overwrite an audit, and preserves each query, result,
+request ID, failure, and provider-reported credit count. Search results remain
+discovery leads; verify decisive wording against a primary text.
+
 ### Deterministic PDF Retrieval
 
 Prepare a UTF-8 CSV with required `openalex_id` and optional `title`, `selected`,
@@ -217,12 +321,41 @@ Preview, then download the explicitly selected works:
 
 .venv/bin/python scripts/openalex_download.py \
   --selection selections/topic.csv \
-  --output-dir downloads/topic
+  --output-dir downloads/topic \
+  --workers 3
 ```
 
 The downloader validates basic PDF integrity and records provenance plus SHA-256
 values in `downloads.jsonl`. It does not search by title, choose substitute
-editions, use library credentials, or access shadow libraries.
+editions, use library credentials, or access shadow libraries. Independent work
+IDs are fetched concurrently (three at a time by default), while audit entries
+remain in selection-file order. After an authentication, quota, or rate-limit
+response, already-running fetches finish but no additional rows are admitted;
+the remainder are logged as `not_attempted`. Use `--workers 1` for sequential
+retrieval or a smaller server load.
+
+An OpenAlex cache miss does not establish that no lawful full text exists. After
+approval of the exact failed IDs, the bounded fallback can inspect external
+locations attached to those exact OpenAlex records and then their DOI/publisher
+pages:
+
+```bash
+.venv/bin/python scripts/openalex_fulltext_fallback.py \
+  --download-log downloads/topic/downloads.jsonl \
+  --output-dir downloads/topic-fallback \
+  --dry-run
+
+.venv/bin/python scripts/openalex_fulltext_fallback.py \
+  --download-log downloads/topic/downloads.jsonl \
+  --output-dir downloads/topic-fallback
+```
+
+The fallback never searches by title or substitutes a work. It accepts a landing
+page only after DOI or title/author identity checks, and it checks the downloaded
+PDF itself for DOI or strong title/author evidence before publication. Candidate
+URLs, rejections, hashes, and final statuses are retained in `recovery.jsonl`.
+Scholar, general web search, library credentials, and shadow libraries are outside
+this fallback.
 
 ## Evidence And Quotations
 

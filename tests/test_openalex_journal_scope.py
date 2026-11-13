@@ -39,6 +39,8 @@ class JournalScopeTest(unittest.TestCase):
         urls = search.preview_urls(
             "scholarly metadata infrastructure",
             50,
+            from_year=2000,
+            to_year=2020,
             source_ids=["S1", "S2"],
             search_mode="semantic",
         )
@@ -47,6 +49,7 @@ class JournalScopeTest(unittest.TestCase):
         self.assertIn("search.semantic=scholarly+metadata+infrastructure", urls[0])
         self.assertIn("primary_location.source.id:S1%7CS2", urls[0])
         self.assertNotIn("sort=relevance_score", urls[0])
+        self.assertNotIn("publication_date", urls[0])
 
     def test_semantic_request_limits_are_enforced(self):
         with self.assertRaisesRegex(ValueError, "at most 50"):
@@ -71,6 +74,24 @@ class JournalScopeTest(unittest.TestCase):
 
         self.assertEqual(pages, [[{"id": "W1"}]])
         self.assertEqual(query.get_calls, [{"per_page": 50}])
+
+    def test_semantic_date_range_is_enforced_locally(self):
+        class FakeQuery:
+            def get(self, **kwargs):
+                return [
+                    {"id": "W1", "publication_year": 1999, "relevance_score": 3},
+                    {"id": "W2", "publication_year": 2010, "relevance_score": 2},
+                    {"id": "W3", "publication_year": 2021, "relevance_score": 1},
+                ]
+
+        original = search.works_query
+        search.works_query = lambda *args, **kwargs: FakeQuery()
+        try:
+            works = search.fetch_works("query", 50, None, None, 2000, 2020,
+                                       search_mode="semantic")
+        finally:
+            search.works_query = original
+        self.assertEqual([work["id"] for work in works], ["W2"])
 
     def test_scope_loader_rejects_unresolved_sources(self):
         with tempfile.TemporaryDirectory() as directory:

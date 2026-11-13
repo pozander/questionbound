@@ -99,6 +99,18 @@ class TavilyAbstractFallbackTests(unittest.TestCase):
         self.assertTrue(abstract.startswith("This is a sufficiently long abstract"))
         self.assertNotIn("Keywords", abstract)
 
+    def test_identity_accepts_exact_title_in_page_body_when_html_title_is_generic(self):
+        expected = record(1)
+        result = {
+            "title": "Author publications",
+            "url": "https://author.example/publication",
+            "document_text": "Systems Action Research Study 1 by Robert L. Flood, published in 2010.",
+        }
+        accepted, score, reasons = fallback.identity_match(expected, result)
+        self.assertTrue(accepted)
+        self.assertEqual(score, 1.0)
+        self.assertIn("title=1.000", reasons)
+
     def test_flattened_abstract_and_html_metadata(self):
         flooded = "AbstractThis article investigates systems thinking and action research in a sufficiently detailed sentence for reliable extraction. Keywords systems"
         self.assertTrue(fallback.extract_abstract(flooded).startswith("This article"))

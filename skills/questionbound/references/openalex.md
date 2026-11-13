@@ -93,6 +93,17 @@ Do not refresh the registry during an ordinary search.
 OpenAlex is a changing catalogue. Preserve the query, timestamp, filters, IDs,
 and returned records; do not promise that a later run will rank identically.
 
+For multiple approved queries, prefer `openalex_batch.py` with the fixed query
+manifest rather than an ad hoc shell loop. Its default boundary is three query
+processes and at most two simultaneous semantic queries. It preserves a separate
+result per query and writes `openalex-batch-audit.json`. It makes no automatic
+retries and stops admitting new work after authentication, quota, or rate-limit
+responses; already-running calls may finish. Use `--dry-run` before the live
+batch. Process isolation is intentional because PyAlex configuration is global.
+OpenAlex does not accept date filters with semantic search, so the script applies
+the approved date range locally to the bounded semantic result set; lexical date
+filters remain server-side.
+
 ## Bounded Tavily Gap Recovery
 
 Use `tavily_abstract_fallback.py` only after an approved OpenAlex result set has
@@ -101,6 +112,14 @@ query ladder, and request ceilings before execution. Preview with `--dry-run`.
 Keep its audit output beside the enriched pack and label Tavily-derived evidence
 separately from OpenAlex metadata. Never promote an ambiguous search snippet to
 an abstract or use the fallback to silently expand the research question.
+
+When an approved bounded source-scout run has produced fixed candidate URLs,
+`materialize_agentic_abstracts.py` can insert exact abstract text locally. It
+tries validated exact-ID PDFs, the recorded URLs, and an exact-DOI OpenAIRE
+record in that order. The last route is metadata retrieval for the same work,
+not discovery. Preview with `--dry-run`; keep the materialization audit beside
+the enriched pack. Do not accept a search snippet or a page lacking both
+identity evidence and an explicit abstract field or label.
 
 ## Deterministic PDF Retrieval
 
@@ -113,7 +132,7 @@ Preview first:
 ```bash
 .venv/bin/python scripts/openalex_download.py \
   --selection selections/topic.csv \
-  --output-dir downloads/topic --dry-run
+  --output-dir downloads/topic --workers 3 --dry-run
 ```
 
 After the selection and execution boundary are approved, remove `--dry-run`.
@@ -121,4 +140,25 @@ The downloader uses OpenAlex only, validates basic PDF integrity, preserves
 existing valid files, and appends provenance and SHA-256 values to
 `downloads.jsonl`. It does not search for substitute editions or use shadow
 libraries. Review unavailable works explicitly rather than silently replacing
-them.
+them. The default three-worker pool fetches distinct work IDs concurrently and
+writes audit records in selection order. A hard authentication, quota, or
+rate-limit response stops admission of new work; in-flight fetches finish and
+the remainder are recorded as `not_attempted`. Set `--workers 1` for sequential
+retrieval.
+
+An unavailable OpenAlex-cached PDF is not proof that lawful full text is absent.
+If exact failed IDs and the external-location boundary are separately approved,
+preview the bounded fallback:
+
+```bash
+.venv/bin/python scripts/openalex_fulltext_fallback.py \
+  --download-log downloads/topic/downloads.jsonl \
+  --output-dir downloads/topic-fallback --dry-run
+```
+
+The fallback examines only external locations on the exact OpenAlex work and its
+exact DOI/publisher page. It does not search by title, use Scholar, or substitute
+editions. It validates landing-page identity and then independently requires DOI
+or strong title/author evidence inside the downloaded PDF. Preserve
+`recovery.jsonl`, including rejected candidates and checksums, beside the primary
+download audit.

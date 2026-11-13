@@ -4,6 +4,7 @@
 """Download explicitly selected OpenAlex PDFs; no search or title matching."""
 
 import argparse
+from concurrent.futures import FIRST_COMPLETED, Future, ThreadPoolExecutor, wait
 import csv
 from datetime import datetime, timezone
 import hashlib
@@ -139,6 +140,39 @@ def fetch_one(row, output_dir, api_key, timeout, max_bytes):
     return record, stop
 
 
+def fetch_rows(rows, output_dir, api_key, timeout, max_bytes, workers):
+    """Fetch in parallel while admitting no new work after a hard-stop response."""
+    pending = list(enumerate(rows))
+    running: dict[Future, tuple[int, dict]] = {}
+    results = {}
+    stopped = False
+
+    def admit(pool):
+        while pending and len(running) < workers and not stopped:
+            index, row = pending.pop(0)
+            future = pool.submit(fetch_one, row, output_dir, api_key, timeout, max_bytes)
+            running[future] = (index, row)
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        admit(pool)
+        while running:
+            done, _ = wait(running, return_when=FIRST_COMPLETED)
+            for future in done:
+                index, _ = running.pop(future)
+                record, should_stop = future.result()
+                results[index] = record
+                stopped |= should_stop
+            admit(pool)
+
+    for index, row in pending:
+        results[index] = {
+            **row, "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+            "status": "not_attempted",
+            "detail": "Stopped after authentication, quota, or rate-limit response.",
+        }
+    return [results[index] for index in range(len(rows))]
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--selection", required=True, type=Path, help="Audited CSV with openalex_id and optional title, selected, notes.")
@@ -146,9 +180,11 @@ def main(argv=None):
     parser.add_argument("--dry-run", action="store_true", help="Validate and print the plan without network calls or file writes.")
     parser.add_argument("--timeout", type=float, default=60, help="Network connect/read timeout in seconds.")
     parser.add_argument("--max-mb", type=int, default=200, help="Maximum size per PDF (MiB).")
+    parser.add_argument("--workers", type=int, default=3,
+                        help="Maximum simultaneous work/PDF fetches (default: 3).")
     args = parser.parse_args(argv)
-    if args.timeout <= 0 or args.max_mb <= 0:
-        parser.error("--timeout and --max-mb must be positive.")
+    if args.timeout <= 0 or args.max_mb <= 0 or args.workers <= 0:
+        parser.error("--timeout, --max-mb, and --workers must be positive.")
     try:
         rows = read_selection(args.selection)
     except (OSError, ValueError, csv.Error) as exc:
@@ -158,22 +194,18 @@ def main(argv=None):
     if args.dry_run:
         for row in rows:
             print(f"{row['openalex_id']} -> {args.output_dir / (row['openalex_id'] + '.pdf')} | {row['title']}")
-        print(f"{len(rows)} selected works. No network calls or file writes.")
+        print(f"{len(rows)} selected works; up to {args.workers} parallel fetches. No network calls or file writes.")
         return 0
     api_key = os.environ.get("OPENALEX_API_KEY")
     if not api_key:
         parser.error("Set OPENALEX_API_KEY before downloading.")
     args.output_dir.mkdir(parents=True, exist_ok=True)
     log_path = args.output_dir / "downloads.jsonl"
-    incomplete, stopped = False, False
+    records = fetch_rows(rows, args.output_dir, api_key, args.timeout,
+                         args.max_mb * 1024 * 1024, args.workers)
+    incomplete = False
     with log_path.open("a", encoding="utf-8") as log:
-        for row in rows:
-            if stopped:
-                record = {**row, "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-                          "status": "not_attempted", "detail": "Stopped after authentication, quota, or rate-limit response."}
-            else:
-                record, stopped = fetch_one(row, args.output_dir, api_key,
-                                            args.timeout, args.max_mb * 1024 * 1024)
+        for row, record in zip(rows, records):
             incomplete |= record["status"] not in {"downloaded", "existing"}
             log.write(json.dumps({field: record.get(field, "") for field in FIELDS}, ensure_ascii=False) + "\n")
             log.flush()

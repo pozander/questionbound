@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import threading
+import time
 import unittest
 from unittest.mock import patch
 
@@ -100,11 +102,45 @@ class DownloadsTest(unittest.TestCase):
         get.return_value = Response(status=429)
         path = self.selection("openalex_id\nW123\nW456\n")
         with patch.dict("os.environ", {"OPENALEX_API_KEY": "secret"}):
-            code = download.main(["--selection", str(path), "--output-dir", str(self.root)])
+            code = download.main(["--selection", str(path), "--output-dir", str(self.root), "--workers", "1"])
         self.assertEqual(code, 1)
         self.assertEqual(get.call_count, 1)
         records = [json.loads(line) for line in (self.root / "downloads.jsonl").read_text().splitlines()]
         self.assertEqual([r["status"] for r in records], ["error", "not_attempted"])
+
+    def test_parallel_fetch_is_bounded_and_keeps_selection_order(self):
+        rows = [{"openalex_id": f"W{i}", "title": str(i), "notes": ""}
+                for i in range(6)]
+        lock = threading.Lock()
+        active = peak = 0
+
+        def fake_fetch(row, *args):
+            nonlocal active, peak
+            with lock:
+                active += 1
+                peak = max(peak, active)
+            time.sleep(0.02)
+            with lock:
+                active -= 1
+            return {**row, "status": "downloaded"}, False
+
+        with patch.object(download, "fetch_one", side_effect=fake_fetch):
+            records = download.fetch_rows(rows, self.root, "secret", 10, 2000, 3)
+        self.assertEqual(peak, 3)
+        self.assertEqual([record["openalex_id"] for record in records],
+                         [row["openalex_id"] for row in rows])
+
+    def test_parallel_hard_stop_does_not_admit_more_work(self):
+        rows = [{"openalex_id": f"W{i}", "title": str(i), "notes": ""}
+                for i in range(5)]
+
+        def fake_fetch(row, *args):
+            return {**row, "status": "error"}, True
+
+        with patch.object(download, "fetch_one", side_effect=fake_fetch) as fetch:
+            records = download.fetch_rows(rows, self.root, "secret", 10, 2000, 2)
+        self.assertEqual(fetch.call_count, 2)
+        self.assertEqual([record["status"] for record in records].count("not_attempted"), 3)
 
     @patch.object(download.requests, "get")
     def test_dry_run_has_no_side_effects(self, get):

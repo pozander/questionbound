@@ -135,9 +135,11 @@ def works_query(
         query_obj = query_obj.filter(
             primary_location={"source": {"id": "|".join(source_ids)}}
         )
-    if from_year:
+    # OpenAlex currently rejects filters combined with search.semantic. Fetch the
+    # bounded semantic result set and enforce the approved date range locally.
+    if from_year and search_mode == "lexical":
         query_obj = query_obj.filter(from_publication_date=f"{from_year}-01-01")
-    if to_year:
+    if to_year and search_mode == "lexical":
         query_obj = query_obj.filter(to_publication_date=f"{to_year}-12-31")
     if search_mode == "lexical":
         query_obj = query_obj.sort(relevance_score="desc")
@@ -211,6 +213,12 @@ def fetch_works(
         raise RuntimeError(f"OpenAlex/PyAlex failed: {exc}") from exc
 
     works = list(works_by_id.values())
+    if search_mode == "semantic":
+        works = [
+            work for work in works
+            if (from_year is None or (work.get("publication_year") or 0) >= from_year)
+            and (to_year is None or (work.get("publication_year") or 9999) <= to_year)
+        ]
     works.sort(key=lambda work: work.get("relevance_score") or 0, reverse=True)
     return works[:max_results]
 
@@ -638,7 +646,6 @@ def main() -> int:
         raise SystemExit(f"Invalid --journal-scope: {exc}") from exc
     source_ids = journal_scope["_source_ids"] if journal_scope else []
     output_path = Path(args.output)
-    output_path.parent.mkdir(parents=True, exist_ok=True)
 
     if args.dry_run:
         print("Parsed query:")
@@ -663,6 +670,7 @@ def main() -> int:
         print(f"Output format: {args.format}")
         return 0
 
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     try:
         works = fetch_works(
             query,
